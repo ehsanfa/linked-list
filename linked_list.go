@@ -10,7 +10,7 @@ type Node struct {
 	prev   *Node
 }
 
-func (n *Node) Value() {
+func (n *Node) Value() interface{}{
 	return n.value
 }
 
