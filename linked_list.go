@@ -17,6 +17,7 @@ func (n *Node) Value() interface{}{
 type LinkedList struct {
 	head  *Node
 	tail  *Node
+	count int
 }
 
 // adds a node to the head of the list
@@ -36,6 +37,7 @@ func (ll *LinkedList) Prepend(value interface{}) {
 
 	// set the head of the list as the new node
 	ll.head = newhead
+	ll.count++
 }
 
 // adds a node to the tail of the list
@@ -57,6 +59,7 @@ func (ll *LinkedList) Append(value interface{}) {
 
 	// set the tail of the list as the new node
 	ll.tail = newtail
+	ll.count++
 }
 
 func (ll *LinkedList) newNode(value interface{}) *Node{
@@ -85,10 +88,7 @@ func (ll *LinkedList) PopFirst() Node {
 }
 
 func (ll *LinkedList) isEmpty() bool {
-	if ll.head == nil && ll.tail == nil {
-		return true
-	}
-	return false
+	return ll.count == 0
 }
 
 func NewLinkedList() LinkedList {
@@ -127,16 +127,11 @@ func (ll *LinkedList) Remove(n *Node) {
 	}
 	n.prev = nil
 	n.next = nil
+	ll.count--
 }
 
 func (ll *LinkedList) Count() int {
-	c := 0
-	n := ll.tail
-	for n != nil {
-		c++
-		n = n.next
-	}
-	return c
+	return ll.count
 }
 
 func (ll *LinkedList) RemoveValue(value interface{}) bool{

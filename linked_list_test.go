@@ -22,4 +22,7 @@ func TestLinkedList(t *testing.T) {
 	if ll.Contains("node3") {
 		t.Error("remove doesn't work as expected")
 	}
+	if ll.Count() != 5 {
+		t.Error("miscount")
+	}
 }
