@@ -10,6 +10,10 @@ type Node struct {
 	prev   *Node
 }
 
+func (n *Node) Value() {
+	return n.value
+}
+
 type LinkedList struct {
 	head  *Node
 	tail  *Node
@@ -156,8 +160,4 @@ func (ll *LinkedList) Contains(value interface{}) bool {
 		n = n.next
 	}
 	return false
-}
-
-func main() {
-	
 }
